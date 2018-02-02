@@ -47,14 +47,18 @@ The main goal of this plugin is to let people using a JS-in-CSS workflow load JI
 The plugin has the following format:
 
 ```js
-jsincss(stylesheet, targets, events)
+jsincss(stylesheet, selector, events)
 ```
 
 - `stylesheet` is a JavaScript function that returns a CSS stylesheet as a string
-- `targets` is an array containing either `'window'` or a CSS selector list quoted as a string
+- `selector` is string containing either `'window'` or a CSS selector 
 - `events` is an array of events to add event listeners for, quoted as strings: (eg. `['load', resize']`)
 
+The default `selector` is `window`, and the default list of `events` is `['load', 'resize', 'input', 'click']`.
+
 ## Example
+
+This example uses the default `selector` and `events` list, and provides the stylesheet inline.
 
 ```js
 <script type=module>
@@ -70,6 +74,31 @@ jsincss(stylesheet, targets, events)
     `
   })
 </script>
+```
+
+It's also possible to write your stylesheets as a separate JavaScript module like this:
+
+```js
+export default () => {
+  
+  return `
+  
+    body:before {
+      content: '${innerWidth} x ${innerHeight}';
+    }
+  
+  `
+  
+}
+```
+
+And then import both the `jsincss` plugin and the stylesheet into your module and run them like this:
+
+```js
+import jsincss from 'https://unpkg.com/jsincss/index.js'
+import stylesheet from './path/to/stylesheet.js'
+
+jsincss(stylesheet)
 ```
 
 ## Compatible JS-in-CSS Plugins
