@@ -1,3 +1,97 @@
 # jsincss
 
 A JS-in-CSS stylesheet loader
+
+## About
+
+This plugin is a JavaScript module that loads [JS-in-CSS stylesheets](https://responsive.style/theory/what-is-a-jic-stylesheet.html), manages the creation of `<style>` tags to output the processed stylesheets, and registers event listeners for reprocessing loaded stylesheets when changes occur in the browser.
+
+## Downloading
+
+You can download `index.js` and add it to your codebase, or download it with npm:
+
+```bash
+npm install jsincss
+```
+
+Another option that works for building or testing, that isn't ideal for production use, is linking to the module directly from a CDN like unpkg:
+
+```html
+<script type=module>
+  import 'jsincss' from 'https://unpkg.com/jsincss/index.js'
+</script>
+```
+
+## Importing
+
+You can import the plugin into your own JavaScript modules in a couple of ways.
+
+The first way is using the native [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) in JavaScript. Here you can assign any name you want to the function you are importing, and you only need to provide a path to the plugin's `index.js` file:
+
+```js
+import jsincss from './node_modules/jsincss/index.js'
+```
+
+If you want to use `require` to load this plugin instead, and use a bundler like Webpack or Parcel, make sure to add `.default` as you require it:
+
+```js
+const jsincss = require('jsincss').default
+```
+
+Once you have imported this plugin into your module, you can use the plugin as `jsincss()`
+
+## Using JS-in-CSS Stylesheets
+
+The main goal of this plugin is to let people using a JS-in-CSS workflow load JIC stylesheets inside of a JavaScript module.
+
+The plugin has the following format:
+
+```js
+jsincss(stylesheet, targets, events)
+```
+
+- `stylesheet` is a JavaScript function that returns a CSS stylesheet as a string
+- `targets` is an array containing either `'window'` or a CSS selector list quoted as a string
+- `events` is an array of events to add event listeners for, quoted as strings: (eg. `['load', resize']`)
+
+## Example
+
+```js
+<script type=module>
+  import jsincss from 'https://unpkg.com/jsincss/index.js'
+
+  jsincss(() => {
+    return `
+
+      body:before {
+        content: '${innerWidth} x ${innerHeight}';
+      }
+
+    `
+  })
+</script>
+```
+
+## Compatible JS-in-CSS Plugins
+
+- [jsincss-ancestor-selector](https://github.com/tomhodgins/jsincss-ancestor-selector)
+- [jsincss-aspect-ratio](https://github.com/tomhodgins/jsincss-aspect-ratio)
+- [jsincss-auto-expand](https://github.com/tomhodgins/jsincss-auto-expand)
+- [jsincss-closest-selector](https://github.com/tomhodgins/jsincss-closest-selector)
+- [jsincss-compare-attribute](https://github.com/tomhodgins/jsincss-compare-attribute)
+- [jsincss-custom-specificity](https://github.com/tomhodgins/jsincss-custom-specificity)
+- [jsincss-days](https://github.com/tomhodgins/jsincss-days)
+- [jsincss-elder-selector](https://github.com/tomhodgins/jsincss-elder-selector)
+- [jsincss-element-query](https://github.com/tomhodgins/jsincss-element-query)
+- [jsincss-element-units](https://github.com/tomhodgins/jsincss-element-units)
+- [jsincss-first-selector](https://github.com/tomhodgins/jsincss-first-selector)
+- [jsincss-frontend-variables](https://github.com/tomhodgins/jsincss-frontend-variables)
+- [jsincss-has-selector](https://github.com/tomhodgins/jsincss-has-selector)
+- [jsincss-last-selector](https://github.com/tomhodgins/jsincss-last-selector)
+- [jsincss-parent-selector](https://github.com/tomhodgins/jsincss-parent-selector)
+- [jsincss-previous-selector](https://github.com/tomhodgins/jsincss-previous-selector)
+- [jsincss-protocol-sniffer](https://github.com/tomhodgins/jsincss-protocol-sniffer)
+- [jsincss-regex-match](https://github.com/tomhodgins/jsincss-regex-match)
+- [jsincss-scoped-eval](https://github.com/tomhodgins/jsincss-scoped-eval)
+- [jsincss-string-match](https://github.com/tomhodgins/jsincss-string-match)
+- [jsincss-xpath-selector](https://github.com/tomhodgins/jsincss-xpath-selector)
