@@ -65,6 +65,7 @@ This example uses the default `selector` and `events` list, and provides the sty
   import jsincss from 'https://unpkg.com/jsincss/index.js'
 
   jsincss(() => {
+
     return `
 
       body:before {
@@ -72,6 +73,7 @@ This example uses the default `selector` and `events` list, and provides the sty
       }
 
     `
+
   })
 </script>
 ```
