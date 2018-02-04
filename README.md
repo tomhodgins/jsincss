@@ -18,7 +18,7 @@ Another option that works for building or testing, that isn't ideal for producti
 
 ```html
 <script type=module>
-  import 'jsincss' from 'https://unpkg.com/jsincss/index.js'
+  import jsincss from 'https://unpkg.com/jsincss/index.js'
 </script>
 ```
 
@@ -80,15 +80,15 @@ It's also possible to write your stylesheets as a separate JavaScript module lik
 
 ```js
 export default () => {
-  
+
   return `
-  
+
     body:before {
       content: '${innerWidth} x ${innerHeight}';
     }
-  
+
   `
-  
+
 }
 ```
 
