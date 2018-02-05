@@ -1,6 +1,6 @@
 {
   "name": "jsincss",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A JS-in-CSS stylesheet loader",
   "main": "index.js",
   "scripts": {
