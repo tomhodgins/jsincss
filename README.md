@@ -64,34 +64,26 @@ This example uses the default `selector` and `events` list, and provides the sty
 <script type=module>
   import jsincss from 'https://unpkg.com/jsincss/index.js'
 
-  jsincss(() => {
+  jsincss(() => `
 
-    return `
+    body:before {
+      content: '${innerWidth} x ${innerHeight}';
+    }
 
-      body:before {
-        content: '${innerWidth} x ${innerHeight}';
-      }
-
-    `
-
-  })
+  `)
 </script>
 ```
 
 It's also possible to write your stylesheets as a separate JavaScript module like this:
 
 ```js
-export default () => {
+export default () => `
 
-  return `
+  body:before {
+    content: '${innerWidth} x ${innerHeight}';
+  }
 
-    body:before {
-      content: '${innerWidth} x ${innerHeight}';
-    }
-
-  `
-
-}
+`
 ```
 
 And then import both the `jsincss` plugin and the stylesheet into your module and run them like this:
