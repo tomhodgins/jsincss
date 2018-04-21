@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A JS-in-CSS stylesheet loader",
   "main": "index.js",
+  "module": "index.vanilla.js",
+  "browser": "index.browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

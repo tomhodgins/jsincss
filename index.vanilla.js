@@ -28,7 +28,7 @@ function populateStylesheet(id, stylesheet) {
 
 }
 
-module.exports = (stylesheet, selector, events) => {
+export default (stylesheet, selector, events) => {
 
   let id = Date.now() + Math.floor(Math.random() * 100)
 

@@ -8,17 +8,17 @@ This plugin is a JavaScript module that loads [JS-in-CSS stylesheets](https://re
 
 ## Downloading
 
-You can download `index.js` and add it to your codebase, or download it with npm:
+You can download jsincss and add it to your codebase manually, or download it with npm:
 
 ```bash
 npm install jsincss
 ```
 
-Another option that works for building or testing, that isn't ideal for production use, is linking to the module directly from a CDN like unpkg:
+> Another option that works for building or testing, that isn't ideal for production use, is linking to the module directly from a CDN like unpkg:
 
 ```html
 <script type=module>
-  import jsincss from 'https://unpkg.com/jsincss/index.js'
+  import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
 </script>
 ```
 
@@ -26,23 +26,23 @@ Another option that works for building or testing, that isn't ideal for producti
 
 You can import the plugin into your own JavaScript modules in a couple of ways.
 
-The first way is using the native [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) in JavaScript. Here you can assign any name you want to the function you are importing, and you only need to provide a path to the plugin's `index.js` file:
+The first way is using the native [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) in JavaScript. Here you can assign any name you want to the function you are importing, and you only need to provide a path to the plugin's `index.vanilla.js` file:
 
 ```js
-import jsincss from './node_modules/jsincss/index.js'
+import jsincss from './node_modules/jsincss/index.vanilla.js'
 ```
 
-If you want to use `require` to load this plugin instead, and use a bundler like Webpack or Parcel, make sure to add `.default` as you require it:
+You can also use `require` to load this plugin instead with a bundler like Webpack or Parcel:
 
 ```js
-const jsincss = require('jsincss').default
+const jsincss = require('jsincss')
 ```
 
 Once you have imported this plugin into your module, you can use the plugin as `jsincss()`
 
 ## Using JS-in-CSS Stylesheets
 
-The main goal of this plugin is to let people using a JS-in-CSS workflow load JIC stylesheets inside of a JavaScript module.
+The main goal of this plugin is to let people using a JS-in-CSS workflow load [JIC stylesheets](https://responsive.style/theory/what-is-a-jic-stylesheet.html) inside of a JavaScript module.
 
 The plugin has the following format:
 
@@ -56,13 +56,15 @@ jsincss(stylesheet, selector, events)
 
 The default `selector` is `window`, and the default list of `events` is `['load', 'resize', 'input', 'click']`.
 
+You can also create and listen for custom events with JavaScript using `new Event()` and `dispatchEvent()` for total control over when jsincss reprocesses styles.
+
 ## Example
 
 This example uses the default `selector` and `events` list, and provides the stylesheet inline.
 
 ```js
 <script type=module>
-  import jsincss from 'https://unpkg.com/jsincss/index.js'
+  import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
 
   jsincss(() => `
 
@@ -89,7 +91,7 @@ export default () => `
 And then import both the `jsincss` plugin and the stylesheet into your module and run them like this:
 
 ```js
-import jsincss from 'https://unpkg.com/jsincss/index.js'
+import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
 import stylesheet from './path/to/stylesheet.js'
 
 jsincss(stylesheet)

@@ -28,7 +28,7 @@ function populateStylesheet(id, stylesheet) {
 
 }
 
-module.exports = (stylesheet, selector, events) => {
+function jsincss(stylesheet, selector, events) {
 
   let id = Date.now() + Math.floor(Math.random() * 100)
 
