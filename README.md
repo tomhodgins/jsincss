@@ -14,7 +14,7 @@ You can download jsincss and add it to your codebase manually, or download it wi
 npm install jsincss
 ```
 
-> Another option that works for building or testing, that isn't ideal for production use, is linking to the module directly from a CDN like unpkg:
+Another option that works for building or testing, that isn't ideal for production use, is linking to the module directly from a CDN like unpkg:
 
 ```html
 <script type=module>
@@ -29,10 +29,10 @@ You can import the plugin into your own JavaScript modules in a couple of ways.
 The first way is using the native [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) in JavaScript. Here you can assign any name you want to the function you are importing, and you only need to provide a path to the plugin's `index.vanilla.js` file:
 
 ```js
-import jsincss from './node_modules/jsincss/index.vanilla.js'
+import jsincss from './index.vanilla.js'
 ```
 
-You can also use `require` to load this plugin instead with a bundler like Webpack or Parcel:
+You can also use `require()` to load this plugin instead with a bundler like Webpack or Parcel:
 
 ```js
 const jsincss = require('jsincss')

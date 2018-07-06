@@ -1,59 +1,56 @@
-function registerEvent(target, event, id, stylesheet) {
+export default function(
+  stylesheet = '',
+  selector = window,
+  events = ['load', 'resize', 'input', 'click', 'reprocess']
+) {
 
-  return target.addEventListener(event, e => populateStylesheet(id, stylesheet))
+  function registerEvent(target, event, id, stylesheet) {
 
-}
-
-function populateStylesheet(id, stylesheet) {
-
-  let tag = document.querySelector(`#jsincss-${id}`)
-
-  if (!tag) {
-
-    tag = document.createElement('style')
-    tag.id = `jsincss-${id}`
-    document.head.appendChild(tag)
+    return target.addEventListener(
+      event,
+      e => populateStylesheet(id, stylesheet)
+    )
 
   }
 
-  const generatedStyles = stylesheet()
-  const currentStyles = tag.innerHTML
+  function populateStylesheet(id, stylesheet) {
 
-  if (!currentStyles
-       || (currentStyles && generatedStyles !== currentStyles)) {
+    let tag = document.querySelector(`#jsincss-${id}`)
 
-    return tag.innerHTML = generatedStyles
+    if (!tag) {
+
+      tag = document.createElement('style')
+      tag.id = `jsincss-${id}`
+      document.head.appendChild(tag)
+
+    }
+
+    const currentStyles = tag.textContent
+    const generatedStyles = stylesheet()
+
+    if (!currentStyles || (generatedStyles !== currentStyles)) {
+
+      return tag.textContent = generatedStyles
+
+    }
 
   }
-
-}
-
-export default (stylesheet, selector, events) => {
 
   let id = Date.now() + Math.floor(Math.random() * 100)
 
-  selector = selector || window
-  events = events || ['load', 'resize', 'input', 'click']
-
   if (selector === window) {
 
-    events.forEach(event => {
-
+    return events.forEach(event =>
       registerEvent(window, event, id, stylesheet)
-
-    })
+    )
 
   } else {
 
-    document.querySelectorAll(selector).forEach(tag => {
-
-      events.forEach(event => {
-
+    return document.querySelectorAll(selector).forEach(tag =>
+      events.forEach(event =>
         registerEvent(tag, event, id, stylesheet)
-
-      })
-
-    })
+      )
+    )
 
   }
 
