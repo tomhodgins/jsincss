@@ -113,10 +113,16 @@ jsincss(stylesheet)
 - [jsincss-frontend-variables](https://github.com/tomhodgins/jsincss-frontend-variables)
 - [jsincss-has-selector](https://github.com/tomhodgins/jsincss-has-selector)
 - [jsincss-last-selector](https://github.com/tomhodgins/jsincss-last-selector)
+- [jsincss-overflow](https://github.com/tomhodgins/jsincss-overflow)
 - [jsincss-parent-selector](https://github.com/tomhodgins/jsincss-parent-selector)
 - [jsincss-previous-selector](https://github.com/tomhodgins/jsincss-previous-selector)
 - [jsincss-protocol-sniffer](https://github.com/tomhodgins/jsincss-protocol-sniffer)
 - [jsincss-regex-match](https://github.com/tomhodgins/jsincss-regex-match)
 - [jsincss-scoped-eval](https://github.com/tomhodgins/jsincss-scoped-eval)
 - [jsincss-string-match](https://github.com/tomhodgins/jsincss-string-match)
+
+- [jsincss-tag-count](https://github.com/tomhodgins/jsincss-tag-count)
+- [jsincss-viewport](https://github.com/tomhodgins/jsincss-viewport)
+
+
 - [jsincss-xpath-selector](https://github.com/tomhodgins/jsincss-xpath-selector)
