@@ -120,9 +120,6 @@ jsincss(stylesheet)
 - [jsincss-regex-match](https://github.com/tomhodgins/jsincss-regex-match)
 - [jsincss-scoped-eval](https://github.com/tomhodgins/jsincss-scoped-eval)
 - [jsincss-string-match](https://github.com/tomhodgins/jsincss-string-match)
-
 - [jsincss-tag-count](https://github.com/tomhodgins/jsincss-tag-count)
 - [jsincss-viewport](https://github.com/tomhodgins/jsincss-viewport)
-
-
 - [jsincss-xpath-selector](https://github.com/tomhodgins/jsincss-xpath-selector)
