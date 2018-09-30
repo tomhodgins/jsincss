@@ -1,5 +1,5 @@
 module.exports = function(
-  stylesheet = '',
+  stylesheet = () => '',
   selector = window,
   events = ['load', 'resize', 'input', 'click', 'reprocess']
 ) {

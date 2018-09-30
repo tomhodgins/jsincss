@@ -97,6 +97,10 @@ import stylesheet from './path/to/stylesheet.js'
 jsincss(stylesheet)
 ```
 
+## Tools using jsincss
+
+- [Qaffeine](https://github.com/tomhodgins/qaffeine)
+
 ## Compatible JS-in-CSS Plugins
 
 - [jsincss-ancestor-selector](https://github.com/tomhodgins/jsincss-ancestor-selector)
