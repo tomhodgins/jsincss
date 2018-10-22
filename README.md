@@ -1,8 +1,10 @@
 # jsincss
 
-A JS-in-CSS stylesheet loader
+An event-driven virtual stylesheet manager
 
 ## About
+
+Jsincss is a plugin that allows you to use JavaScript to template the creation of CSS stylesheets at runtime based on events happening in the browser. This allows you to use JavaScript to easily extend CSS to include new features.
 
 This plugin is a JavaScript module that loads [JS-in-CSS stylesheets](https://responsive.style/theory/what-is-a-jic-stylesheet.html), manages the creation of `<style>` tags to output the processed stylesheets, and registers event listeners for reprocessing loaded stylesheets when changes occur in the browser.
 
@@ -14,7 +16,7 @@ You can download jsincss and add it to your codebase manually, or download it wi
 npm install jsincss
 ```
 
-Another option that works for building or testing, that isn't ideal for production use, is linking to the module directly from a CDN like unpkg:
+Another option is linking to the module directly from a CDN like unpkg:
 
 ```html
 <script type=module>
@@ -54,7 +56,7 @@ jsincss(stylesheet, selector, events)
 - `selector` is string containing either `'window'` or a CSS selector 
 - `events` is an array of events to add event listeners for, quoted as strings: (eg. `['load', resize']`)
 
-The default `selector` is `window`, and the default list of `events` is `['load', 'resize', 'input', 'click']`.
+The default `selector` is `window`, and the default list of `events` is `['load', 'resize', 'input', 'click', 'reprocess']`.
 
 You can also create and listen for custom events with JavaScript using `new Event()` and `dispatchEvent()` for total control over when jsincss reprocesses styles.
 
@@ -66,10 +68,10 @@ This example uses the default `selector` and `events` list, and provides the sty
 <script type=module>
   import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
 
-  jsincss(() => `
+  jsincss(event => `
 
-    body:before {
-      content: '${innerWidth} x ${innerHeight}';
+    body::before {
+      content: '${innerWidth} x ${innerHeight} on ${event.type}';
     }
 
   `)
@@ -79,10 +81,10 @@ This example uses the default `selector` and `events` list, and provides the sty
 It's also possible to write your stylesheets as a separate JavaScript module like this:
 
 ```js
-export default () => `
+export default event => `
 
-  body:before {
-    content: '${innerWidth} x ${innerHeight}';
+  body::before {
+    content: '${innerWidth} x ${innerHeight} on ${event.type}';
   }
 
 `
@@ -100,6 +102,7 @@ jsincss(stylesheet)
 ## Tools using jsincss
 
 - [Qaffeine](https://github.com/tomhodgins/qaffeine)
+- [Deqaf](https://github.com/tomhodgins/deqaf)
 
 ## Compatible JS-in-CSS Plugins
 

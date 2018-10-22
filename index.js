@@ -8,12 +8,12 @@ module.exports = function(
 
     return target.addEventListener(
       event,
-      e => populateStylesheet(id, stylesheet)
+      e => populateStylesheet(id, stylesheet, e)
     )
 
   }
 
-  function populateStylesheet(id, stylesheet) {
+  function populateStylesheet(id, stylesheet, e) {
 
     let tag = document.querySelector(`#jsincss-${id}`)
 
@@ -25,8 +25,7 @@ module.exports = function(
 
     }
 
-    const currentStyles = tag.textContent
-    const generatedStyles = stylesheet()
+    const generatedStyles = stylesheet(e)
 
     if (!currentStyles || (generatedStyles !== currentStyles)) {
 
