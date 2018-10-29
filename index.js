@@ -25,6 +25,7 @@ module.exports = function(
 
     }
 
+    const currentStyles = tag.textContent
     const generatedStyles = stylesheet(e)
 
     if (!currentStyles || (generatedStyles !== currentStyles)) {
