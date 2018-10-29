@@ -1,5 +1,5 @@
 export default function(
-  stylesheet = () => '',
+  stylesheet = event => '',
   selector = window,
   events = ['load', 'resize', 'input', 'click', 'reprocess']
 ) {

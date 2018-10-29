@@ -1,5 +1,5 @@
 function jsincss(
-  stylesheet = () => '',
+  stylesheet = event => '',
   selector = window,
   events = ['load', 'resize', 'input', 'click', 'reprocess']
 ) {
